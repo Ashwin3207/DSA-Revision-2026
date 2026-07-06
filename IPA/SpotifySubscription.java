@@ -1,4 +1,3 @@
-package IPA;
 import java.util.Scanner;
 
 class Spotify
