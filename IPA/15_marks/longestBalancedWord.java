@@ -20,8 +20,28 @@ import java.util.*;
 public class longestBalancedWord {
     public static int findLongestBalanceWord(String word)
     {
+ int vcount =0;
+        int ccount =0;
 
+        for(char c : word.toCharArray())
+        {
+            if(c=='a' ||c=='e' ||c=='i' ||c=='o' ||c=='u' ||c=='A' ||c=='E' ||c=='I' ||c=='O' ||c=='U')
+            {
+                vcount++;
+            }
+            else
+            {
+                ccount++;
+            }
+            
+
+        }
+        if(ccount==vcount)
+        {
+            return word.length();
+        }
         return 0;
+
     }
     public static void main(String[]args)
     {
@@ -29,13 +49,21 @@ public class longestBalancedWord {
 
         String sentence = sc.nextLine();
 
-        int vcount =0;
-        int ccount =0;
-
-        for(char c : sentence.toCharArray())
+        String[] words = sentence.split(" ");
+        String ans = "";
+        for(String wh : words)
         {
-
+            if(ans.length()<findLongestBalanceWord(wh))
+            {
+                ans = wh;
+            }
         }
 
+        System.out.println(ans);
+
+        sc.close();
+      
+
+       
     }
 }
