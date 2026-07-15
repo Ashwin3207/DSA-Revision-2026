@@ -20,7 +20,29 @@ class Graph {
   
     void bfs(int node,boolean[]visited)
     {
-        
+       
+
+        Queue<Integer> q = new ArrayDeque<>();
+        visited[node]= true;
+        q.offer(node);
+
+        while(!q.isEmpty())
+        {
+            int curr = q.poll();
+            System.out.println(curr);
+
+            for(int neighbour : adj.get(curr))
+            {
+                if(!visited[neighbour])
+                {
+                visited[neighbour] = true;
+                q.offer(neighbour);
+                }
+
+            }
+        }
+
+
     }
 
 }
