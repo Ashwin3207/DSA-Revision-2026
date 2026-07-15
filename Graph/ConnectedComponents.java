@@ -21,17 +21,30 @@ class Graph {
     }
 
     // DFS traversal for one connected component
-   void dfs()
+   void dfs(boolean[]visited, int node)
    {
-    
+        visited[node]=true;
+
+        for(int neighbour : adj.get(node))
+        {if(!visited[neighbour])
+            dfs(visited, neighbour);
+        }
    }
 
     // YOU IMPLEMENT THIS
-    int countComponents() {
+    int countComponents(boolean[]visited,int V) {
 
-        // Write your code here
+        int count=0;
+        for(int i = 0 ; i< V ; i ++)
+        {
+            if(!visited[i])
+            {
+                dfs(visited, i);
+                count++;
+            }
+        }
 
-        return 0;
+        return count;
     }
 }
 
@@ -50,6 +63,7 @@ public class ConnectedComponents {
 
         // Component 3: node 5 alone
 
-        System.out.println(graph.countComponents());
+        boolean[] visited = new boolean[6];
+        System.out.println(graph.countComponents(visited,6));
     }
 }
